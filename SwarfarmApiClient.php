@@ -4,6 +4,7 @@
 namespace SwarfarmClient;
 
 
+use SwarfarmClient\Client\BuildingsClient;
 use SwarfarmClient\Client\MonstersClient;
 
 class SwarfarmApiClient
@@ -34,6 +35,17 @@ class SwarfarmApiClient
     {
         if (!($this->lastClientInstantiate instanceof MonstersClient)) {
             $this->lastClientInstantiate = new MonstersClient();
+        }
+        return $this->lastClientInstantiate;
+    }
+
+    /**
+     * @return BuildingsClient
+     */
+    public function buildingRoutes() : BuildingsClient
+    {
+        if (!($this->lastClientInstantiate instanceof BuildingsClient)) {
+            $this->lastClientInstantiate = new BuildingsClient();
         }
         return $this->lastClientInstantiate;
     }
