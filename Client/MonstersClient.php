@@ -33,4 +33,22 @@ class MonstersClient extends AbstractClient
 
         return $monsters;
     }
+
+    /**
+     * GET /api/v2/monsters/{id}
+     * @param int $id
+     * @param array|null $queryData
+     * @return Monster|null
+     * @throws ClientException
+     */
+    public function getMonster(int $id, ?array $queryData = null) : ?Monster
+    {
+        $url = self::MONSTERS_URL . $id . '/';
+        if(!empty($queryData)) {
+            $url .= $this->generateQuerySetFromArray($queryData);
+        }
+        $result = $this->requestApi($url, 'GET');
+
+        return (!empty($result) ? new Monster($result) : null);
+    }
 }
