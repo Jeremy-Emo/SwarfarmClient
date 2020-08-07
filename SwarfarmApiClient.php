@@ -49,4 +49,15 @@ class SwarfarmApiClient
         }
         return $this->lastClientInstantiate;
     }
+
+    /**
+     * @param string $pk
+     * @return $this
+     */
+    public function setUserPK(string $pk) : self
+    {
+        $this->user_pk = $pk;
+
+        return $this;
+    }
 }
